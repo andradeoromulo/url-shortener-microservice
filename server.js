@@ -1,34 +1,18 @@
 // Imports
-const mongoose = require("mongoose");
 const express = require('express');
-const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const router = require("./routes/index");
+const db = require("./database/database");
+const dotenv = require("dotenv");
 
-// Environment variables
-require('dotenv').config();
+// Basic Configuration, Envirnment variables and db connection
+dotenv.config();
+db.connect();
 
-// Database connection
-const uri = process.env.ATLAS_URI;
-const connectionParams = {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true
-};
-
-mongoose.connect(uri, connectionParams)
-  .then(() =>
-    console.log("Database successfully connected")
-  )
-  .catch((err) => 
-    console.log(`Error connecting to the database:\n${err}`)  
-  );
-
-const connection = mongoose.connection;
-
-// Basic Configuration
 const port = process.env.PORT || 3000;
+
+const app = express();
 
 app.use(cors({optionsSuccessStatus: 200}));
 

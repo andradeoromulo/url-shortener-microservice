@@ -2,7 +2,7 @@ const Url = require("../models/url");
 const validator = require("validator");
 const adler32 = require("adler32");
 
-exports.shorturl_get = async function(req, res) {
+exports.shorturl_get = async function(req, res, next) {
     
     const shortUrl = req.params.short_url;
 
@@ -16,7 +16,7 @@ exports.shorturl_get = async function(req, res) {
 
     } else {
 
-        res.send("No such url");
+        next();
 
     }
 
@@ -40,7 +40,11 @@ exports.shorturl_post = async function(req, res) {
                 {
                     original_url: urlInput
                 },
-                "original_url short_url"
+                {
+                    _id: 0,
+                    original_url: 1,
+                    short_url: 1
+                }
             );
         
             if(existingUrl) {
@@ -70,12 +74,14 @@ exports.shorturl_post = async function(req, res) {
             res.json(responseJson);
 
         } catch(err) {
-            console.log(err);
+            res.status(500).json({
+                "error": "unexpected error"
+            });
         }
 
     } else {
 
-        res.json({
+        res.status(400).json({
             "error": "invalid url"
         });
 
