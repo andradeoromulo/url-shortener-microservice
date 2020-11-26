@@ -1,8 +1,10 @@
 // Imports
-const mongoose = require('mongoose');
-const cors = require('cors');
+const mongoose = require("mongoose");
 const express = require('express');
 const app = express();
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const router = require("./routes/index");
 
 // Environment variables
 require('dotenv').config();
@@ -27,19 +29,22 @@ const connection = mongoose.connection;
 
 // Basic Configuration
 const port = process.env.PORT || 3000;
+
 app.use(cors({optionsSuccessStatus: 200}));
+
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 
 // Static files
 app.use(express.static(`${__dirname}/public`));
 
 // Routing
 app.get('/', function(req, res) {
-  res.sendFile(`${__dirname}views/index.html`);
+  res.sendFile(`${__dirname}/views/index.html`);
 });
 
-app.get('/api/hello', function(req, res) {
-  res.json({ greeting: 'hello API' });
-});
+app.use('/api/shorturl', router);
 
 // Server listening
 app.listen(port, function() {
