@@ -17,7 +17,7 @@ GET `/api/shorturl/{short_url}` | Redirect to the original URL previously regist
 * `{"error":"invalid url"}`
 
 ## How to use:
-Be sure to change the `uri` variable in `database.js` according to your own MongoDB server. It's also possible to just create a `.env` file and save this information the in order to keep it hidden and safe. Then, just run on terminal:
+Be sure to change the `uri` variable in `database.js` according to your own MongoDB server. It's also possible to just create a `.env` file and store this information there in order to keep it hidden and safe. Then, just run on terminal:
 ```
 npm install
 npm start
