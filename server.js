@@ -30,6 +30,11 @@ app.get('/', function(req, res) {
 
 app.use('/api/shorturl', router);
 
+// No matching route
+app.use(function(req, res) {
+  res.status(404).sendFile(`${__dirname}/views/404.html`);
+});
+
 // Server listening
 app.listen(port, function() {
   console.log(`Server listening on port ${port}`);

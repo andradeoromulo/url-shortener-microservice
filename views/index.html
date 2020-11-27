@@ -2,19 +2,32 @@
 
 <html>
   <head>
-    <title>URL Shortener Microservice | freeCodeCamp.org</title>
-    <link
-      rel="icon" 
-      type="image/png" 
-      href="https://cdn.freecodecamp.org/universal/favicons/favicon-16x16.png"
-    />
-    <link href="/public/style.css" rel="stylesheet" type="text/css" />
-  </head>
+    <title>URL Shortener Microservice
+    </title>
+    <link rel="shortcut icon" href="https://cdn.hyperdev.com/us-east-1%3A52a203ff-088b-420f-81be-45bf559d01b1%2Ffavicon.ico" type="image/x-icon"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <link href="style.css" rel="stylesheet" type="text/css">
+ </head>
 
   <body>
-    <h1>URL Shortener Microservice</h1>
-    <main>
+    <div class="container">
+      <header>
+
+        <h2>API Project: URL Shortener Microservice</h2>
+
+        <p>
+          This is my project of the <a href="https://www.freecodecamp.org/learn/apis-and-microservices/apis-and-microservices-projects/url-shortener-microservice" target="_blank"> 
+          URL Shortener Microservice challenge </a> for the freeCodeCamp API and Microservice certification. 
+          It was built based on the boilerplate available <a href="https://github.com/freeCodeCamp/boilerplate-project-urlshortener/" target="_blank">here</a>.
+        </p>
+
+      </header>
+
       <section>
+
+        <h3>Create short link:</h3>
+        <p>If you want to create a short link, fill the input below with the url:</p>
+
         <form action="api/shorturl/new" method="POST">
           <fieldset>
             <legend>URL Shortener</legend>
@@ -23,10 +36,25 @@
             <input type="submit" value="POST URL" />
           </fieldset>
         </form>
+
+        <p>You'll receive an object like this one as output:</p>
+        <code>{"original_url":"https://freecodecamp.org","short_url":"1904412960"}</code>
+
+        <h3>Access short link:</h3>
+        
+        <p>To access a short link and be redirected to the original URL, just hit this endpoint:</p>
+        <code>/api/shorturl/{short_url}</code>
+        
       </section>
-    </main>
-    <footer>
-      <p>By <a href="https://www.freecodecamp.org/">freeCodeCamp</a></p>
-    </footer>
+
+      <footer>
+
+        <p>
+          By <a href="https://www.github.com/andradeoromulo" target="_blank">Rômulo Andrade</a> for <a href="https://www.freecodecamp.org/" target="_blank">freeCodeCamp</a> certification.
+        </p>
+
+      <footer>
+
+    </div>
   </body>
 </html>

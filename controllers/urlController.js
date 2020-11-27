@@ -16,7 +16,9 @@ exports.shorturl_get = async function(req, res, next) {
 
     } else {
 
-        next();
+        res.status(404).json({
+            "error": "Short link not found"
+        });
 
     }
 
